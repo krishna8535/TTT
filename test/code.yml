@@ -1,0 +1,25 @@
+---
+- name: Create EC2 instance (ansible-core 2.19.2)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Launch EC2 instance (ansible-core 2.19.2)
+      amazon.aws.ec2_instance:
+        name: instance_name
+        region: us-east-2
+        image_id: ami-00e428798e77d38d9
+        instance_type: t3.micro
+        key_name: Cafe_Ui
+        vpc_subnet_id: subnet-0633373d91639d2d6
+        security_groups:
+          - sg-047b96f72f68ffc87
+        network:
+          assign_public_ip: true
+        wait: true
+        tags:
+          Environment: Dev
+          Owner: Ansible
+e
+
